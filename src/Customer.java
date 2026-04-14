@@ -2,11 +2,13 @@ public class Customer {
 
     private String name;
     private String order;
+    private String orderMaterial;
     private int satisfaction;
 
     // Constructor for end product customer.
-    public Customer(String name, String order, int satisfaction){
+    public Customer(String name, String orderMaterial, String order, int satisfaction){
         this.name = name;
+        this.orderMaterial = orderMaterial;
         this.order = order;
         this.satisfaction = satisfaction;
     }
@@ -22,6 +24,10 @@ public class Customer {
         return name;
     }
 
+    public String getOrderMaterial(){
+        return orderMaterial;
+    }
+
     public String getOrder(){
         return order;
     }
@@ -32,7 +38,7 @@ public class Customer {
 
     // [Debug] John Debug
     public static Customer spawnJohn(){
-        return new Customer("John", " Sword", 3);
+        return new Customer("John", "Bronze", "Sword", 3);
     }
 
     @Override
