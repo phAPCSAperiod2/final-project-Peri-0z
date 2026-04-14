@@ -1,29 +1,38 @@
-public class Craft {
+import java.util.Scanner;
+
+public class Craft{
     private String item;
     private String material;
-    private String quality; // Will not be used until MVP is complete.
 
-    public Craft(String item, String material, String quality){
+    public Craft(String item, String material) {
         this.item = item;
         this.material = material;
-        this.quality = quality;
     }
 
-    public Craft(String item, String material){
-        this.item = item;
-        this.material = material;
-        this.quality = "good";
+    public static String craftingProcess(){
+        System.out.println("What do you want to craft? (Sword / Axe / Shield)");
+        System.out.print("> ");
+        String item = scanner.nextLine();
+
+        System.out.println("Choose material (Bronze / Iron / Steel)");
+        System.out.print("> ");
+        String material = scanner.nextLine();
+
+        // String quality = calculateQuality(item, material); AFTER MVP
+
+        Craft craft = new Craft(item, material);
+
+        System.out.println("You crafted a " + material + " " + item + "!");
+        // System.out.println("Quality: " + quality); AFTER MVP
+
+        return craft;
     }
 
-    public String getItem(){
+    public String getItem() {
         return item;
     }
 
-    public String getMaterial(){
+    public String getMaterial() {
         return material;
-    }
-
-    public String getQuality(){
-        return quality;
     }
 }

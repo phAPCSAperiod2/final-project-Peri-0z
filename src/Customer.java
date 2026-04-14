@@ -36,6 +36,32 @@ public class Customer {
         return satisfaction;
     }
 
+    public static Customer spawnRandom() {
+        String[] names = {"Aarav", "Anna", "Borin", "Marcus", "Lena",
+    "Kai", "Amara", "Darius", "Elena", "Hassan",
+    "Iris", "Jasper", "Kira", "Leo", "Maya",
+    "Nina", "Omar", "Rhea", "Soren", "Talia",
+    "Viktor", "Zara",
+    "Elias", "Freya", "Gideon", "Hana", "Idris",
+    "Jonas", "Livia", "Milo", "Noor", "Orin",
+    "Piper", "Quinn", "Rafael", "Selene", "Theo",
+    "Uma", "Vera", "Wren", "Xander", "Yara",
+    "Zayn",
+    "Aria", "Blaise", "Celine", "Dante", "Esme",
+    "Felix", "Gwen", "Hugo", "Ines", "Juno",
+    "Keira", "Lucian", "Mira", "Nico", "Opal",
+    "Paolo", "Reina", "Silas", "Tobias", "Valen",
+    "Willow", "Yusuf"};
+        String[] materials = {"Bronze", "Iron", "Steel"};
+        String[] items = {"Sword", "Shield", "Axe"};
+
+        String name = names[(int)(Math.random() * names.length)];
+        String material = materials[(int)(Math.random() * materials.length)];
+        String item = items[(int)(Math.random() * items.length)];
+
+        return new Customer(name, material, item, 3);
+    }
+
     // [Debug] John Debug
     public static Customer spawnJohn(){
         return new Customer("John", "Bronze", "Sword", 3);
