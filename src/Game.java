@@ -15,7 +15,7 @@ public class Game {
 
         startDay();
         System.out.println("=========================================");
-        System.out.println("Day " + day + " finished!");
+        System.out.println("Day " + (day - 1) + " finished!");
         System.out.println("Total customers served: " + totalCustomersServed + "/" + totalCustomersVisited);
         System.out.println("=========================================");
 
@@ -37,7 +37,7 @@ public class Game {
 
             // Convert into gameplay loop when MVP is met.
             Customer customer = Customer.spawnRandom();
-            System.out.println("[" + customer.getName() + "]: Hello, I'd like a " + customer.getOrderMaterial() + " " + customer.getOrder() + " please.");
+            System.out.println("[" + customer.getName() + "]: ''Hello, I'd like a " + customer.getOrderMaterial() + " " + customer.getOrder() + " please.''");
             System.out.println("Serve customer? [Yes] [No]");
             System.out.print(">");
 
@@ -45,10 +45,26 @@ public class Game {
             String input = scanner.nextLine().trim().toLowerCase();
 
             if (input.equals("yes") || input.equals("y")){
-                customersServed++;
-                totalCustomersServed++;
-                totalCustomersVisited++;
-                System.out.println("Customer served! (" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
+                Craft craftedItem = Craft.craftingProcess();
+                craftedItem = Craft.checkCraftedItem(craftedItem, customer, scanner);
+
+                // Check if correct item was crafted
+                if (craftedItem.getItem().equalsIgnoreCase(customer.getOrder()) &&
+                    craftedItem.getMaterial().equalsIgnoreCase(customer.getOrderMaterial())) {
+
+                    customersServed++;
+                    totalCustomersServed++;
+                    totalCustomersVisited++;
+
+                    System.out.println("\nPerfect! " + customer.getName() + " is happy.\n");
+                } else {
+                    customersLost++;
+                    totalCustomersVisited++;
+
+                    System.out.println("\n[" + customer.getName() + "]: ''That's not what I ordered!''\n");
+                }
+
+    System.out.println("(" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
                 if (customersServed + customersLost < customersToday){
                     System.out.println("Another customer approaches your shop...");
                     System.out.println();
@@ -59,7 +75,7 @@ public class Game {
             } else if (input.equals("no") || input.equals("n")){
                 customersLost++;
                 totalCustomersVisited++;
-                System.out.println("Customer left unhappy. (" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
+                System.out.println("\n" + customer.getName() + " left unhappy. (" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
                 if (customersServed + customersLost < customersToday){
                     System.out.println("Another customer approaches your shop...");
                     System.out.println();
