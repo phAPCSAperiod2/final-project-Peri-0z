@@ -45,7 +45,7 @@ public class Game {
             String input = scanner.nextLine().trim().toLowerCase();
 
             if (input.equals("yes") || input.equals("y")){
-                Craft craftedItem = Craft.craftingProcess();
+                Item craftedItem = Craft.craftingProcess();
                 craftedItem = Craft.checkCraftedItem(craftedItem, customer, scanner);
 
                 // Check if correct item was crafted

@@ -4,6 +4,10 @@ public class Customer {
     private String order;
     private String orderMaterial;
     private int satisfaction;
+    public static String[][] orders = {
+        {"Dagger", "Sword", "Katana", "Scimitar", "Saber", "Greatsword", "Cleaver", "Rapier", "Lance", "Spear", "Mace", "Staff", "Hammer", "Greathammer", "Axe", "Greataxe", "Halberd", "Claws", "Shield", "Greatshield", "Bow", "Longbow", "Flintlock", "Musket", "Falchion"},
+        {"Stone", "Copper", "Bronze", "Iron", "Steel", "Silver", "Gold", "Diamond", "Obsidian", "Titanium"}
+    };
 
     // Constructor for end product customer.
     public Customer(String name, String orderMaterial, String order, int satisfaction){
@@ -52,12 +56,11 @@ public class Customer {
     "Keira", "Lucian", "Mira", "Nico", "Opal",
     "Paolo", "Reina", "Silas", "Tobias", "Valen",
     "Willow", "Yusuf"};
-        String[] materials = {"Bronze", "Iron", "Steel"};
-        String[] items = {"Sword", "Shield", "Axe"};
-
         String name = names[(int)(Math.random() * names.length)];
-        String material = materials[(int)(Math.random() * materials.length)];
-        String item = items[(int)(Math.random() * items.length)];
+        int index = (int)(Math.random() * orders.length);
+
+        String item = orders[0][(int)(Math.random() * orders[0].length)];
+        String material = orders[1][(int)(Math.random() * orders[1].length)];
 
         return new Customer(name, material, item, 3);
     }
