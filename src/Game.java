@@ -13,18 +13,40 @@ public class Game {
         System.out.println("ForgeCraft v0.0.3");
         System.out.println("=========================================");
 
-        startDay();
-        System.out.println("=========================================");
-        System.out.println("Day " + (day - 1) + " finished!");
-        System.out.println("Total customers served: " + totalCustomersServed + "/" + totalCustomersVisited);
-        System.out.println("=========================================");
+        boolean playing = true;
+        Scanner scanner = new Scanner(System.in);
+
+        while (playing){
+            startDay(scanner);
+            System.out.println("=========================================");
+            System.out.println("Day " + (day - 1) + " finished!");
+            System.out.println("Total customers served: " + totalCustomersServed + "/" + totalCustomersVisited);
+            System.out.println("=========================================");
+
+            System.out.println("Continue to next day? [Yes] [No]");
+            System.out.print("> ");
+
+            String input = scanner.nextLine().toLowerCase();
+
+            if (!input.equals("yes") && !input.equals("y")) {
+                playing = false;
+                System.out.println("\n ~~~~~~~~~~~~~~~~~~~~~~~~~ GAME FINISHED ~~~~~~~~~~~~~~~~~~~~~~~~~");
+            }
+
+            System.out.println();
+        }
+        scanner.close();
 
     }
 
-    public static void startDay(){
-        Scanner scanner = new Scanner(System.in);
-
-        int customersToday = (int)(Math.random() * 3) + 2; // Range 2-4.
+    public static void startDay(Scanner scanner){
+        // Scanner scanner = new Scanner(System.in);
+        int customersToday;
+        if (day == 1) {
+            customersToday = (int)(Math.random() * 4 - 2 + 1) + 2; // Range 2-4.
+        } else {
+            customersToday = (int)(Math.random() * 8 - 6 + 1) + 6; // Range 6-8
+        }
 
         customersServed = 0;
         customersLost = 0;
@@ -89,7 +111,6 @@ public class Game {
         }
 
         day++;
-        scanner.close();
     }
 
 }

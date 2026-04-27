@@ -12,8 +12,18 @@ public class Craft {
         for (String weapon : Customer.orders[0]) {
             System.out.println("| " + weapon);
         }
-        System.out.print("> ");
-        String item = scanner.nextLine();
+        String item;
+        while (true) {
+            System.out.print("> ");
+            item = scanner.nextLine().trim();
+
+            if (isValidChoice(item, Customer.orders[0])) {
+                item = normalizeChoice(item, Customer.orders[0]);
+                break;
+            } else {
+                System.out.println("Invalid choice. Pick something you have.");
+            }
+        }
 
         System.out.println("\n╔══════════════════════╗");
         System.out.println("║     MATERIAL BOX     ║");
@@ -22,8 +32,18 @@ public class Craft {
         for (String material : Customer.orders[1]) {
             System.out.println("| " + material);
         }
-        System.out.print("> ");
-        String material = scanner.nextLine();
+        String material;
+        while (true) {
+            System.out.print("> ");
+            material = scanner.nextLine().trim();
+
+            if (isValidChoice(material, Customer.orders[1])) {
+                material = normalizeChoice(material, Customer.orders[1]);
+                break;
+            } else {
+                System.out.println("Invalid choice. Pick something you have.");
+            }
+        }
 
         Item craftedItem = new Item(item, material);
 
@@ -56,6 +76,22 @@ public class Craft {
         }
     }
 
+    public static boolean isValidChoice(String input, String[] options) {
+        for (String option : options) {
+            if (option.equalsIgnoreCase(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public static String normalizeChoice(String input, String[] options) {
+        for (String option : options) {
+            if (option.equalsIgnoreCase(input)) {
+                return option; // return properly formatted version
+            }
+        }
+        return input;
+    }
 
 }

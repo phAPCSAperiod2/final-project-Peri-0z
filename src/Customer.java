@@ -6,7 +6,7 @@ public class Customer {
     private int satisfaction;
     public static String[][] orders = {
         {"Dagger", "Sword", "Katana", "Scimitar", "Saber", "Greatsword", "Cleaver", "Rapier", "Lance", "Spear", "Mace", "Staff", "Hammer", "Greathammer", "Axe", "Greataxe", "Halberd", "Claws", "Shield", "Greatshield", "Bow", "Longbow", "Flintlock", "Musket", "Falchion"},
-        {"Stone", "Copper", "Bronze", "Iron", "Steel", "Silver", "Gold", "Diamond", "Obsidian", "Titanium"}
+        {"Copper", "Bronze", "Iron", "Steel", "Silver", "Gold", "Diamond", "Obsidian", "Titanium"}
     };
 
     // Constructor for end product customer.
