@@ -12,6 +12,7 @@ public class Game {
         System.out.println("=========================================");
         System.out.println("ForgeCraft v0.0.3");
         System.out.println("=========================================");
+        System.out.println("You are a novice blacksmith in the kingdom of Aetheria.\nServe as many customers as you can to the best of your ability.\nThe more accurate and higher quality your crafted items are, the better your score will be.\nGet the highest score possible!\n");
 
         boolean playing = true;
         Scanner scanner = new Scanner(System.in);
@@ -42,10 +43,10 @@ public class Game {
     public static void startDay(Scanner scanner){
         // Scanner scanner = new Scanner(System.in);
         int customersToday;
-        if (day == 1) {
-            customersToday = (int)(Math.random() * 4 - 2 + 1) + 2; // Range 2-4.
+        if (day <= 1) {
+            customersToday = (int)(Math.random() * 3) + 2; // Range 2-4.
         } else {
-            customersToday = (int)(Math.random() * 8 - 6 + 1) + 6; // Range 6-8
+            customersToday = (int)(Math.random() * 3) + 6; // Range 6-8
         }
 
         customersServed = 0;
@@ -55,61 +56,76 @@ public class Game {
         System.out.println("Customers Today: " + customersToday);
         System.out.println();
 
-        while(customersServed + customersLost < customersToday){
+        while (customersServed + customersLost < customersToday) {
 
-            // Convert into gameplay loop when MVP is met.
             Customer customer = Customer.spawnRandom();
-            System.out.println("[" + customer.getName() + "]: ''Hello, I'd like a " + customer.getOrderMaterial() + " " + customer.getOrder() + " please.''");
-            System.out.println("Serve customer? [Yes] [No]");
-            System.out.print(">");
 
-            // Scan for user input. If "yes" flag as a served customer. If "no", do not count as customer served.
-            String input = scanner.nextLine().trim().toLowerCase();
+            boolean validInput = false;
 
-            if (input.equals("yes") || input.equals("y")){
-                Item craftedItem = Craft.craftingProcess();
-                craftedItem = Craft.checkCraftedItem(craftedItem, customer, scanner);
+            while (!validInput) {
+                System.out.println("[" + customer.getName() + "]: ''Hello, I'd like a "
+                + customer.getOrderMaterial() + " " + customer.getOrder() + " please.''");
+                System.out.println("Serve customer? [Yes] [No]");
+                System.out.print("> ");
 
-                // Check if correct item was crafted
-                if (craftedItem.getItem().equalsIgnoreCase(customer.getOrder()) &&
-                    craftedItem.getMaterial().equalsIgnoreCase(customer.getOrderMaterial())) {
+                String input = scanner.nextLine().trim().toLowerCase();
 
-                    customersServed++;
-                    totalCustomersServed++;
-                    totalCustomersVisited++;
+                if (input.equals("yes") || input.equals("y")) {
+                    validInput = true;
 
-                    System.out.println("\nPerfect! " + customer.getName() + " is happy.\n");
-                } else {
+                    Item craftedItem = Craft.craftingProcess();
+                    craftedItem = Craft.checkCraftedItem(craftedItem, customer, scanner);
+
+                    boolean correctItem = craftedItem.getItem().equalsIgnoreCase(customer.getOrder());
+                    boolean correctMaterial = craftedItem.getMaterial().equalsIgnoreCase(customer.getOrderMaterial());
+
+                    if (correctItem && correctMaterial) {
+
+                        customersServed++;
+                        totalCustomersServed++;
+                        totalCustomersVisited++;
+
+                        System.out.println("\nPerfect! " + customer.getName() + " is happy.\n");
+
+                    }
+                    else if (correctItem) {
+
+                        customersServed++;
+                        totalCustomersServed++;
+                        totalCustomersVisited++;
+
+                        System.out.println("\n[" + customer.getName() + "]: ''Thank you, I'll take this. I wanted it to be made with "
+                            + customer.getOrderMaterial() + " though...''\n");
+
+                    }
+                    else {
+
+                        customersLost++;
+                        totalCustomersVisited++;
+
+                        System.out.println("\n[" + customer.getName() + "]: ''That's not what I ordered!''\n");
+                    }
+
+                } else if (input.equals("no") || input.equals("n")) {
+                 validInput = true;
+
                     customersLost++;
                     totalCustomersVisited++;
 
-                    System.out.println("\n[" + customer.getName() + "]: ''That's not what I ordered!''\n");
+                    System.out.println("\n" + customer.getName() + " left unhappy.");
+                } else {
+                    System.out.println("Invalid input. Try again.");
                 }
+            }
 
-    System.out.println("(" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
-                if (customersServed + customersLost < customersToday){
-                    System.out.println("Another customer approaches your shop...");
-                    System.out.println();
-                } else {
-                    System.out.println("Seems like nobody else is coming to your shop.");
-                    System.out.println();
-                }
-            } else if (input.equals("no") || input.equals("n")){
-                customersLost++;
-                totalCustomersVisited++;
-                System.out.println("\n" + customer.getName() + " left unhappy. (" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
-                if (customersServed + customersLost < customersToday){
-                    System.out.println("Another customer approaches your shop...");
-                    System.out.println();
-                } else {
-                    System.out.println("Seems like nobody else is coming to your shop.");
-                    System.out.println();
-                }
+            System.out.println("(" + customersServed + "/" + customersToday + " Orders Fulfilled.)");
+
+            if (customersServed + customersLost < customersToday) {
+                System.out.println("Another customer approaches your shop...\n");
             } else {
-                System.out.println("Invalid input. Try again.");
+                System.out.println("Seems like nobody else is coming to your shop.\n");
             }
         }
-
         day++;
     }
 

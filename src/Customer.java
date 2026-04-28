@@ -5,8 +5,8 @@ public class Customer {
     private String orderMaterial;
     private int satisfaction;
     public static String[][] orders = {
-        {"Dagger", "Sword", "Katana", "Scimitar", "Saber", "Greatsword", "Cleaver", "Rapier", "Lance", "Spear", "Mace", "Staff", "Hammer", "Greathammer", "Axe", "Greataxe", "Halberd", "Claws", "Shield", "Greatshield", "Bow", "Longbow", "Flintlock", "Musket", "Falchion"},
-        {"Copper", "Bronze", "Iron", "Steel", "Silver", "Gold", "Diamond", "Obsidian", "Titanium"}
+        {"Dagger", "Sword", "Katana", "Greatsword", "Rapier", "Spear", "Mace", "Hammer", "Greathammer", "Axe", "Greataxe", "Claws", "Shield", "Greatshield", "Bow", "Longbow", "Flintlock", "Musket", "Armor"},
+        {"Copper", "Bronze", "Iron", "Steel", "Silver", "Gold", "Diamond"}
     };
 
     // Constructor for end product customer.
