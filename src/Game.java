@@ -7,6 +7,7 @@ public class Game {
     private static int customersLost = 0;
     private static int totalCustomersServed = 0;
     private static int totalCustomersVisited = 0;
+    private static int totalScore = 0;
     public static void main(String[] args) throws Exception {
 
         System.out.println("=========================================");
@@ -22,6 +23,10 @@ public class Game {
             System.out.println("=========================================");
             System.out.println("Day " + (day - 1) + " finished!");
             System.out.println("Total customers served: " + totalCustomersServed + "/" + totalCustomersVisited);
+            if (totalScore < 0){
+                totalScore = 0;
+            }
+            System.out.println("Total Score: " + totalScore);
             System.out.println("=========================================");
 
             System.out.println("Continue to next day? [Yes] [No]");
@@ -61,6 +66,7 @@ public class Game {
             Customer customer = Customer.spawnRandom();
 
             boolean validInput = false;
+            int bonus = 0;
 
             while (!validInput) {
                 System.out.println("[" + customer.getName() + "]: ''Hello, I'd like a "
@@ -81,29 +87,41 @@ public class Game {
 
                     if (correctItem && correctMaterial) {
 
+                        bonus = 100;
                         customersServed++;
                         totalCustomersServed++;
                         totalCustomersVisited++;
+                        totalScore += bonus;
 
                         System.out.println("\nPerfect! " + customer.getName() + " is happy.\n");
+                        System.out.println("Score: +" + bonus + "!");
+                        System.out.println("Total Score: " + totalScore);
 
                     }
                     else if (correctItem) {
 
+                        bonus = 50;
                         customersServed++;
                         totalCustomersServed++;
                         totalCustomersVisited++;
+                        totalScore += bonus;
 
                         System.out.println("\n[" + customer.getName() + "]: ''Thank you, I'll take this. I wanted it to be made with "
                             + customer.getOrderMaterial() + " though...''\n");
+                        System.out.println("Score: +" + bonus + "!");
+                        System.out.println("Total Score: " + totalScore);
 
                     }
                     else {
 
+                        bonus = -100;
                         customersLost++;
                         totalCustomersVisited++;
+                        totalScore += bonus;
 
                         System.out.println("\n[" + customer.getName() + "]: ''That's not what I ordered!''\n");
+                        System.out.println("Score: " + bonus + "!");
+                        System.out.println("Total Score: " + totalScore);
                     }
 
                 } else if (input.equals("no") || input.equals("n")) {

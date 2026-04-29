@@ -28,6 +28,7 @@ public class Craft {
         System.out.println("\n╔══════════════════════╗");
         System.out.println("║     MATERIAL BOX     ║");
         System.out.println("╚══════════════════════╝");
+        System.out.println("Choose your materials per the customer's request!\nYou will refine your item after this step.\nHigher grade materials will be harder\nto work with.");
 
         for (String material : Customer.orders[1]) {
             System.out.println("| " + material);
@@ -45,10 +46,11 @@ public class Craft {
             }
         }
 
-        Item craftedItem = new Item(item, material);
+        String quality = determineQuality(scanner, material);
+        Item craftedItem = new Item(item, material, quality);
 
-        System.out.println("\nYou crafted a " + material.toUpperCase() + " " + item.toUpperCase() + "!");
 
+        System.out.println("\nYou crafted a "+ quality.toUpperCase() + " QUALITY " + material.toUpperCase() + " " + item.toUpperCase() + "!");
         return craftedItem;
     }
 
@@ -76,6 +78,62 @@ public class Craft {
         }
     }
 
+    public static String determineQuality(Scanner scanner, String material) {
+    int index = getMaterialIndex(material);
+    int maxRange = getRangeFromIndex(index);
+
+    int target = (int)(Math.random() * maxRange) + 1;
+    int bestDiff = Integer.MAX_VALUE;
+
+    System.out.println("\n╔══════════════════════╗");
+    System.out.println("║      REFINEMENT      ║");
+    System.out.println("╚══════════════════════╝");
+    System.out.println("Refine your item for bonus points!\nHigher quality results mean higher bonuses.\nOn a scale from [1 - " + maxRange + "], how hard\ndo you strike with your hammer?");
+
+    for (int attempt = 1; attempt <= 3; attempt++) {
+        System.out.print("[Attempt " + attempt + "/3] >");
+
+        int guess;
+
+        if (scanner.hasNextInt()) {
+            guess = scanner.nextInt();
+            scanner.nextLine();
+        } else {
+            System.out.println("Invalid input. That attempt counts.");
+            scanner.nextLine();
+            continue;
+        }
+
+        if (guess < 1 || guess > maxRange) {
+            System.out.println("Out of range! That attempt counts.");
+            continue;
+        }
+
+        int diff = Math.abs(target - guess);
+
+        if (diff < bestDiff) {
+            bestDiff = diff;
+        }
+
+        if (guess < target) {
+            System.out.println("Too low...");
+        } else if (guess > target) {
+            System.out.println("Too high...");
+        } else {
+            System.out.println("Perfect strike!");
+            break;
+        }
+    }
+
+        // Determine final quality from BEST attempt
+        if (bestDiff == target) return "Perfect";
+        if (bestDiff <= 2) return "Artisan";
+        if (bestDiff <= 5) return "Decent";
+        if (bestDiff <= 10) return "Good";
+        if (bestDiff <= 40) return "Average";
+        return "Poor";
+    }
+
     public static boolean isValidChoice(String input, String[] options) {
         for (String option : options) {
             if (option.equalsIgnoreCase(input)) {
@@ -92,6 +150,22 @@ public class Craft {
             }
         }
         return input;
+    }
+
+    public static int getMaterialIndex(String material) {
+    for (int i = 0; i < Customer.orders[1].length; i++) {
+        if (Customer.orders[1][i].equalsIgnoreCase(material)) {
+            return i;
+        }
+    }
+    return -1; // fallback (shouldn't happen)
+    }
+
+    public static int getRangeFromIndex(int index) {
+        if (index >= 0 && index <= 1) return 100;
+        if (index >= 2 && index <= 4) return 250;
+        if (index >= 5 && index <= 6) return 400;
+        return 100; // default fallback
     }
 
 }
