@@ -121,6 +121,70 @@ public class Customer {
     }
 
     /**
+     * Array of possible greeting dialogue lines used when customers place an order.
+     * Each string contains format specifiers for material (%s) and item (%s).
+     */
+    public static String[] greetings = {
+        "Hello there! Could you forge me a %s %s?",
+        "Greetings, smith. I need a %s %s.",
+        "Hey! I'm looking for a %s %s.",
+        "Think you can make me a %s %s?",
+        "I've got coin if you've got a %s %s."
+    };
+
+    /**
+     * Array of possible dialogue lines used when a customer receives a perfect item.
+     */
+    public static String[] reactionsPerfect = {
+        "This is perfect! Exactly what I wanted!",
+        "Incredible craftsmanship!",
+        "You've got real talent, smith.",
+        "Worth every coin.",
+    };
+
+    /**
+    * Array of possible dialogue lines used when a customer receives a partially correct item.
+    */
+    public static String[] reactionsPartial = {
+       "It'll do... but not quite right.",
+       "Hmm… not the material I asked for.",
+       "Close enough, I suppose.",
+    };
+
+    /**
+     * Array of possible dialogue lines used when a customer receives an incorrect item.
+    */
+    public static String[] reactionsFail = {
+        "What is this supposed to be?!",
+        "This isn't what I ordered!",
+        "Completely wrong!",
+    };
+
+    /**
+     * Array of possible dialogue lines used when a customer is turned down before service.
+    */
+    public static String[] reactionsTurnedDown = {
+        "Seriously? I needed that...",
+        "Wow. Terrible service.",
+        "I'll take my business elsewhere.",
+        "Unbelievable… I thought this was a forge.",
+        "Fine. I didn't need it anyway.",
+        "Guess I'll find a real blacksmith.",
+        "What a waste of time."
+    };
+
+    /**
+    * Returns a random string from the provided array of dialogue lines.
+    *
+     * @param lines the array of possible dialogue strings
+    * @return a randomly selected string from the array
+    */
+    public static String getRandomLine(String[] lines) {
+        return lines[(int)(Math.random() * lines.length)];
+    }
+
+
+    /**
      * Debug method that spawns a predefined customer named John.
      *
      * @return a Customer named John with a fixed order

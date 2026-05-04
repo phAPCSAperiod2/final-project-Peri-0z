@@ -96,14 +96,16 @@ public class Game {
         while (customersServed + customersLost < customersToday) {
 
             Customer customer = Customer.spawnRandom();
+            String line = Customer.getRandomLine(Customer.greetings);
+            line = String.format(line, customer.getOrderMaterial(), customer.getOrder());
 
             boolean validInput = false;
             int bonus = 0;
 
             // Handle player decision for each customer
             while (!validInput) {
-                System.out.println("[" + customer.getName() + "]: ''Hello, I'd like a "
-                + customer.getOrderMaterial() + " " + customer.getOrder() + " please.''");
+
+                System.out.println("[" + customer.getName() + "]: \"" + line + "\"");
                 System.out.println("Serve customer? [Yes] [No]");
                 System.out.print("> ");
 
@@ -128,7 +130,8 @@ public class Game {
                         totalCustomersVisited++;
                         totalScore += bonus;
 
-                        System.out.println("\nPerfect! " + customer.getName() + " is happy.\n");
+                        String reaction = Customer.getRandomLine(Customer.reactionsPerfect);
+                        System.out.println("\n[" + customer.getName() + "]: \"" + reaction + "\"\n");
                         System.out.println("Score: +" + bonus + "!");
                         System.out.println("Total Score: " + totalScore);
 
@@ -142,8 +145,8 @@ public class Game {
                         totalCustomersVisited++;
                         totalScore += bonus;
 
-                        System.out.println("\n[" + customer.getName() + "]: ''Thank you, I'll take this. I wanted it to be made with "
-                            + customer.getOrderMaterial() + " though...''\n");
+                        String reaction = Customer.getRandomLine(Customer.reactionsPartial);
+                        System.out.println("\n[" + customer.getName() + "]: \"" + reaction + "\"\n");
                         System.out.println("Score: +" + bonus + "!");
                         System.out.println("Total Score: " + totalScore);
 
@@ -156,7 +159,8 @@ public class Game {
                         totalCustomersVisited++;
                         totalScore += bonus;
 
-                        System.out.println("\n[" + customer.getName() + "]: ''That's not what I ordered!''\n");
+                        String reaction = Customer.getRandomLine(Customer.reactionsFail);
+                        System.out.println("\n[" + customer.getName() + "]: \"" + reaction + "\"\n");
                         System.out.println("Score: " + bonus + "!");
                         System.out.println("Total Score: " + totalScore);
                     }
@@ -167,7 +171,8 @@ public class Game {
                     customersLost++;
                     totalCustomersVisited++;
 
-                    System.out.println("\n" + customer.getName() + " left unhappy.");
+                    String reaction = Customer.getRandomLine(Customer.reactionsTurnedDown);
+                    System.out.println("\n[" + customer.getName() + "]: \"" + reaction + "\"\n");
                 } else {
                     System.out.println("Invalid input. Try again.");
                 }

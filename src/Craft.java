@@ -154,10 +154,10 @@ public class Craft {
         }
 
         // Determine final quality from BEST attempt
-        if (bestDiff <= 2) return "Artisan";
-        if (bestDiff <= 5) return "High";
-        if (bestDiff <= 10) return "Good";
-        if (bestDiff <= 40) return "Average";
+        if (bestDiff <= 1) return "Artisan";
+        if (bestDiff <= 4) return "High";
+        if (bestDiff <= 8) return "Good";
+        if (bestDiff <= 25) return "Average";
         return "Poor";
     }
 
