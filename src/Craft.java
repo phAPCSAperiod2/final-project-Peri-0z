@@ -216,9 +216,12 @@ public class Craft {
      * @return the maximum range for the refinement mini-game
      */
     public static int getRangeFromIndex(int index) {
-        if (index >= 0 && index <= 1) return 100;
-        if (index >= 2 && index <= 4) return 250;
-        if (index >= 5 && index <= 6) return 400;
+        if (index >= 0 && index <= 1) return 10;
+        if (index >= 2 && index <= 4) return 100;
+        if (index >= 5 && index <= 8) return 250;
+        if (index >= 9 && index <= 11) return 400;
+        if (index >= 12 && index <= 13) return 600;
+        if (index == 14) return 1000;
         return 100; // default fallback
     }
 
