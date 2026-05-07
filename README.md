@@ -51,7 +51,8 @@ Brief description of:
   > - Material lists
   > - Dialogue generation
   > - Random customer generation
-  
+
+
 **Program Logic:**
 The program follows a structured gameplay loop:
 
