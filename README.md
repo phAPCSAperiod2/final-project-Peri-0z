@@ -1,5 +1,6 @@
 ## 🔹 ForgeCraft
 _A fantasy blacksmith simulation game built in Java._
+
 ForgeCraft is a text-based crafting and customer-service simulation game where the player takes on the role of a novice blacksmith in the kingdom of Aetheria. Players must fulfill customer weapon and armor requests by selecting the correct item, choosing the correct material, and refining the crafted equipment through a skill-based forging system.
 
 The game combines object-oriented programming, randomized gameplay, score tracking, user interaction, and decision-making mechanics into a complete playable experience.
