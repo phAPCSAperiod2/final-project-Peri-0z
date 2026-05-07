@@ -1,189 +1,91 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23543277)
-# AP Computer Science A – Final Project
-## Software & Systems Development Capstone
+## 🔹 ForgeCraft
+_A fantasy blacksmith simulation game built in Java._
+ForgeCraft is a text-based crafting and customer-service simulation game where the player takes on the role of a novice blacksmith in the kingdom of Aetheria. Players must fulfill customer weapon and armor requests by selecting the correct item, choosing the correct material, and refining the crafted equipment through a skill-based forging system.
 
-Welcome to your **Final Project repository**.
+The game combines object-oriented programming, randomized gameplay, score tracking, user interaction, and decision-making mechanics into a complete playable experience.
 
-This repository will hold:
-- Your complete Java project
-- Your project journal and planning artifacts
-- Your final, working software product
+## 🔹 ForgeCraft simulates the daily life of a fantasy blacksmith.
+Each in-game day, customers enter the player’s forge and request custom-crafted weapons, armor, or tools. The player must:
 
-This is not just an assignment — it is a **capstone software project**.
+* Accept or reject customer requests
+* Choose the correct item to forge
+* Select the requested material
+* Complete a refinement mini-game to determine item quality
+* Earn points based on crafting accuracy and craftsmanship
 
----
+The better the crafted item matches the customer’s request, the higher the score reward. Incorrect orders or rejected customers lower the player’s performance and overall score.
 
-## 📌 Project Overview (Read Carefully)
+The game continues day-by-day until the player decides to stop.
 
-In this project, you will:
-- Design and build a **real piece of software**
-- Solve **one real problem** for **one clearly defined user**
-- Work using **agile development**
-- Show evidence of **professional software practices**
-- Use AI responsibly as a planning and support tool
-
-You will leave this course with something you can confidently say:
-
-> “I built this software.”
-
----
-
-## 🔁 Required Workflow (How You Must Work)
-
-### ✅ Daily GitHub Commits (Required)
-You are expected to:
-- Make **at least one meaningful commit every class day**
-- Write **descriptive commit messages** that explain:
-  - What you changed
-  - Why you changed it
-  - What goal it supports
-
-✅ Good commit messages:
-- `Sprint 1: Created Player class and tested constructor`
-- `Sprint 2: Implemented 2D map and verified movement logic`
-
-🚫 Poor commit messages:
-- `updates`
-- `stuff`
-- `final version`
-
-Your commit history is **evidence of your thinking and progress**.
-
----
-
-## 🔁 Agile Development & Sprints
-
-You will complete **4 sprints**.  
-Each sprint includes:
-- Planning
-- Building
-- Testing
-- Feedback and reflection
-
-Each sprint ends with:
-- A sprint grade
-- A sprint reflection
-- Feedback exchanged with peers
-
-🚫 You may NOT complete multiple sprints at once.  
-✅ Each sprint grade is **final**.
-
----
-
-## 🧪 Testing Expectations
-
-Testing is required every sprint.
-
-✅ Testing may include:
-- Running the program with different inputs
-- Print‑based testing
-- Driver program testing
-- Verifying logic and edge cases
-
-You should be able to explain:
-- What you tested
-- How you tested it
-- What you discovered or fixed
-
----
-
-## 🗂️ Required Project Components
-
-Your final project must include:
-
-- ✅ Multiple interacting Java classes
-- ✅ Encapsulation (`private` fields, appropriate getters/setters)
-- ✅ Arrays and/or ArrayLists
-- ✅ A purposeful **2D array**
-- ✅ A working driver program (`main`)
-- ✅ A class diagram matching your final code
-- ✅ Clear documentation
-- ✅ A program that runs and works
-
-Inheritance and interfaces are optional but encouraged.
-
----
-
-## 🤖 Using AI (Allowed, With Responsibility)
-
-You may use AI to:
-- Organize ideas
-- Plan sprints
-- Debug code
-- Suggest design improvements
-
-You must:
-- Document how you used AI
-- Review and evaluate AI suggestions
-- Understand and explain your final code
-
-AI should act like:
-> A junior developer you supervise — not something that builds the project for you.
-
----
-
-## 📘 Project Journal
-
-All planning, work logs, testing notes, and reflections live in **your project journal**.
-
-If it happened during this project, it should be documented there.
-
----
-
-## ✅ Final Submission Expectations
-
-By the end of the project:
-- Your program should run reliably
-- Your technical requirements should be met
-- Your code should be readable and organized
-- Your repository should look **professional**
-
----
-
-# ✨ Final Step: README Update (Very Important)
-
-When your project is complete, you must **rewrite this README**  
-so it reflects **your software**, not the assignment.
-
-Your final README should include:
-
----
-
-## 🔹 Project Title
-
-## 🔹 What This Software Does
-Explain your project in plain language.
-
-## 🔹 Who It’s For
-Describe the user and the problem being solved.
+## 🔹 ForgeCraft is designed for players who enjoy:
+* Fantasy-themed games
+* Strategy and decision-making mechanics
+* Text-based simulation games
+* Resource and management gameplay
+* Games similar to ones from the Papa Louie franchise
 
 ## 🔹 How to Run the Program
-Clear steps so someone else can run your project.
+**Requirements**
+* Java JDK 17+ (or compatible version)
+* IntelliJ IDEA, Eclipse, or any Java IDE
+**Running the Program**
+1. Clone the repository:
+```git clone https://github.com/<your-username>/ForgeCraft.git```
+2.) Open the project in your preferred Java IDE
+3.) Compile the program
+4.) Run:
+```Game.java```
+5.) Follow the on-screen prompts to play
 
 ## 🔹 Technical Overview
 Brief description of:
-- Main classes
-- Key data structures
-- Program logic
+**Main Classes**
+* Game - Controls the primary gameplay loop, score tracking, customer flow, and day progression.
+* Customer - Represents NPC customers visiting the forge.
+* Craft - Handles all crafting mechanics and gameplay systems.
+* Item - Represents crafted equipment produced by the player.
+**Key Data Structures**
+* Arrays - Arrays are heavily used throughout the program for:
+  > - Weapon lists
+  > - Material lists
+  > - Dialogue generation
+  > - Random customer generation
+**Program Logic:**
+The program follows a structured gameplay loop:
+  Start Day
+     ↓
+  Generate Customers
+     ↓
+  Accept/Reject Order
+     ↓
+  Craft Item
+     ↓
+  Refinement Mini-Game
+     ↓
+  Check Accuracy
+     ↓
+  Award Score
+     ↓
+  Next Customer
+     ↓
+  End Day/New Day
 
 ## 🔹 Class Diagram
 <img width="451" height="511" alt="ForgeCraftDiagram2NEW drawio" src="https://github.com/user-attachments/assets/dbdd98b7-8f1c-4df9-a8d1-4755170400bc" />
 
 ## 🔹 Known Limitations / Future Improvements
-What works well, and what you would improve with more time.
+**Limitations:**
+  - Text-based interface only.
+  - No save/load functionality.
+  - Linear and limited progression system.
+  - No inventory or economy system.
+  - Customers are fully randomized.
+  - Scanner objects could be optimized furthermore.
 
----
-
-## 🎯 Final Reminder
-
-This repository represents **you as a developer**.
-
-Take pride in:
-- Your process
-- Your commits
-- Your code
-- Your documentation
-
-Build something real.  
-Build it thoughtfully.  
-Build it well.
+**Future Improvements:**
+  * Player inventory system
+  * Currency/shop mechanics
+  * Kingdom reputation system
+  * NPC storylines and quests
+  * Difficulty scaling over time
+  * Unique, preset customers.
