@@ -167,7 +167,7 @@ Brief description of:
 - Program logic
 
 ## 🔹 Class Diagram
-Include or link your final class diagram.
+<img width="451" height="511" alt="ForgeCraftDiagram2NEW drawio" src="https://github.com/user-attachments/assets/dbdd98b7-8f1c-4df9-a8d1-4755170400bc" />
 
 ## 🔹 Known Limitations / Future Improvements
 What works well, and what you would improve with more time.
