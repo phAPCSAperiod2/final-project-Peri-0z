@@ -54,22 +54,23 @@ Brief description of:
   
 **Program Logic:**
 The program follows a structured gameplay loop:
+
   Start Day
-     ↓
+      ↓
   Generate Customers
-     ↓
+      ↓
   Accept/Reject Order
-     ↓
+      ↓
   Craft Item
-     ↓
+      ↓
   Refinement Mini-Game
-     ↓
+      ↓
   Check Accuracy
-     ↓
+      ↓
   Award Score
-     ↓
+      ↓
   Next Customer
-     ↓
+      ↓
   End Day/New Day
 
 ## 🔹 Class Diagram
