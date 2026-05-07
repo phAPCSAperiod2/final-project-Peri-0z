@@ -1,7 +1,6 @@
  /**
   * The Customer class represents a customer in the ForgeCraft game.
-  * Each customer has a name, an order (item), a material preference,
-  * and a satisfaction level.
+  * Each customer has a name, an order (item), a material preference.
   */
 public class Customer {
 
@@ -14,9 +13,6 @@ public class Customer {
     /** The material the customer wants the item made from. */
     private String orderMaterial;
 
-    /** The customer's satisfaction level. */
-    private int satisfaction;
-
     /**
      * A 2D array containing possible orders and materials.
      * Index 0 contains item types, index 1 contains material types.
@@ -27,18 +23,16 @@ public class Customer {
     };
 
     /**
-     * Constructs a Customer with a specified name, material, order, and satisfaction.
+     * Constructs a Customer with a specified name, material, and order.
      *
      * @param name the name of the customer
      * @param orderMaterial the material the customer wants
      * @param order the item the customer wants crafted
-     * @param satisfaction the initial satisfaction level of the customer
      */
-    public Customer(String name, String orderMaterial, String order, int satisfaction){
+    public Customer(String name, String orderMaterial, String order){
         this.name = name;
         this.orderMaterial = orderMaterial;
         this.order = order;
-        this.satisfaction = satisfaction;
     }
 
     /**
@@ -50,7 +44,6 @@ public class Customer {
     public Customer (String name, String order){
         this.name = name;
         this.order = order;
-        this.satisfaction = 0;
     }
 
     /**
@@ -78,15 +71,6 @@ public class Customer {
      */
     public String getOrder(){
         return order;
-    }
-
-    /**
-     * Gets the customer's satisfaction level.
-     *
-     * @return the satisfaction value
-     */
-    public int getSatisfaction(){
-        return satisfaction;
     }
 
     /**
@@ -130,7 +114,7 @@ public class Customer {
         String item = orders[0][(int)(Math.random() * orders[0].length)];
         String material = orders[1][(int)(Math.random() * orders[1].length)];
 
-        return new Customer(name, material, item, 3);
+        return new Customer(name, material, item);
     }
 
     /**
@@ -242,7 +226,7 @@ public class Customer {
      * @return a Customer named John with a fixed order
      */
     public static Customer spawnJohn(){
-        return new Customer("John", "Bronze", "Sword", 3);
+        return new Customer("John", "Bronze", "Sword");
     }
 
     /**
@@ -252,6 +236,6 @@ public class Customer {
      */
     @Override
     public String toString(){
-        return name + " | Order: " + order + " | Satisfaction: " + satisfaction + "/5 ";
+        return name + " | Order: " + order;
     }
 }
